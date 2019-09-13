@@ -1,6 +1,6 @@
 function shoppingTime(memberId, money) {
   // you can only write your code here!
-  if (memberId == "" || memberId == undefined) {
+  if (!memberId) {
     return "Mohon maaf, toko X hanya berlaku untuk member saja";
   } else if (money < 50000) {
       return "Mohon maaf, uang tidak cukup"

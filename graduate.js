@@ -1,22 +1,17 @@
 function graduates (students) {
   // Code disini
-  var kelas = [];
-  for (let i=0; i<students.length; i++) {
-      if (kelas.indexOf(students[i].class) == -1) {
-          kelas.push(students[i].class);
-      }
-  }
   var output = {};    
-  for (let j=0; j<kelas.length; j++){ 
-    output[kelas[j]] = [];       
-    for (let k=0; k<students.length; k++) {
-        var obj = students[k];
-        if (obj.class == kelas[j]) {              
-            if (obj.score > 75) {
-                output[kelas[j]].push({name : obj.name, score : obj.score})
-            } 
-        } 
-    }
+  for (let j=0; j<students.length; j++){      
+      var keyName = students[j].class;         
+      if (!output[keyName]) {
+          if (students[j].score > 75) {
+              output[keyName]= [{name : students[j].name, score : students[j].score}]
+          } 
+      } else {
+          if (students[j].score > 75) {
+              output[keyName].push({name : students[j].name, score : students[j].score})
+          }
+      }
   }
   return output;
 }

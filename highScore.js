@@ -1,22 +1,14 @@
 function highestScore (students) {
-  // Code disini
-  var kelas = [];
-  for (let i=0; i<students.length; i++) {
-      if (kelas.indexOf(students[i].class) == -1) {
-          kelas.push(students[i].class);
-      }
-  }
+  // Code disini  
   var output = {};    
-  for (let j=0; j<kelas.length; j++){      
-      var nilai = 0;
-      for (let k=0; k<students.length; k++) {
-          var obj = students[k];
-          if (obj.class == kelas[j]) {
-            if (obj.score > nilai) {
-                nilai = obj.score;
-                output[kelas[j]] = {name : obj.name, score : obj.score}
-            } 
-          } 
+  for (let j=0; j<students.length; j++){      
+      var keyName = students[j].class;
+      if (!output[keyName]) {
+          output[keyName] = { name : students[j].name, score : students[j].score}
+      } else {
+          if (output[keyName].score < students[j].score) {
+            output[keyName].score = students[j].score;
+          }
       }
   }
   return output;
